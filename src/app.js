@@ -14,9 +14,10 @@ app.get("/usuarios", async (req, res) => {
     const response = await axios.get("https://randomuser.me/api/?results=10");
     const userData = response.data.results.map((user) => ({
       id: "ID: " + uuidv4(),
-      name: "Nombre: " + user.name.first + " - " + "Apellido: " + user.name.last,
+      name:
+        "Nombre: " + user.name.first + " - " + "Apellido: " + user.name.last,
       gender: "Género: " + user.gender,
-      timestamp: "Timestamp: " +  moment().format("YYYY-MM-DD HH:mm:ss"),
+      timestamp: "Timestamp: " + moment().format("Do MMMM YYYY, h:mm:ss a"),
     }));
 
     const usuariosGenero = _.groupBy(userData, "gender");
